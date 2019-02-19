@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta  charset="utf-8"/>
+<title>속성관련메서드</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css" />
+<style>
+
+	body {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	button {
+		font:16px 'Noto Sans KR', sans-serif;
+		padding:8px 16px;
+	}
+</style>
+
+</head>
+<body>
+	<p>
+		<button>title얻기</button>
+		<button>src변경</button>
+        <button>속성여러개 변경</button>
+	</p>
+	<img src="img/b_ryan.png" alt="라이언" title="라이언"/>
+	
+	<script src="js/jquery.js"></script>
+	<script>
+		//css(), text(), html()
+		//<img>	: 요소, element
+		//src	   : 속성, property, attribute
+		//prop(), attr()
+		$("button:eq(0)").click(function(){
+			var title=$("img").attr("title");
+			alert(title);
+		});//click end
+
+		$("button:eq(1)").click(function(){
+			$("img").attr("src", "img/b_muzi.png");
+		});//click end
+
+		$("button:eq(2)").click(function(){
+			//JSON → key(name)와 value로 구성
+			var obj={"width":400, "height":300, "src":"img/b_con.png", "alt":"콘", "title":"콘" };
+			$("img").attr(obj);
+		});//click end
+
+	</script>
+
+</body>
+</html>

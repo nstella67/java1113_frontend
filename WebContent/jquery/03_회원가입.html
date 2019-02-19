@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>회원가입.html</title>
+</head>
+<body>
+
+* 회원가입 *<br/>
+<form name="memfrm" id="memfrm">
+아이디 :<input type="text" name="uid" id="uid">
+<button id="btn_idcheck">중복확인</button><br/><br/>
+<button id="btn_join">회원가입</button>
+<button id="btn_reset">다시쓰기</button>
+</form> 
+
+<script src="js/jquery.js"></script>
+<script>
+	$("#btn_idcheck").click(function(){
+		window.open("", "", "width=350, height=300");
+	});//click end
+	
+	$("#btn_join").click(function(){
+		//JavaScript
+		//var uid=document.memfrm.uid.value;
+		//var uid=document.getElementById("uid").value
+		
+		//jQuery
+		var uid=$("#uid").val();
+		uid=uid.trim();
+		//alert(uid.trim());
+		if(uid.length==0){
+			alert("아이디 입력해주세요");
+			$("#uid").focus();
+			return false;	// <button> 기본속성은 submit
+								// 서버로 전송하지 않을 경우 onsubmit 이벤트와 동일
+		}//if end
+		
+		//JavaScript
+		//document.memfrm.submit();	//type=submit동일
+		
+		//jQuery
+		$("#memfrm").submit();
+	});//click end
+	
+	$("#btn_reset").click(function(){
+		//JavaScript
+		//document.memfrm.reset();	//type=submit동일
+		
+		//jQuery
+		$("#memfrm").reset();
+	});//click end
+	
+</script>
+</body>
+</html>

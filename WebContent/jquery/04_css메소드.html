@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<title>css메서드</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css" />
+<style type="text/css">
+	body {
+		font-family: 'Noto Sans KR', sans-serif;
+	}
+	button {
+		font:16px 'Noto Sans KR', sans-serif;
+		padding:8px 16px;
+	}
+	#box {
+		width:400px;
+		height:300px;
+		border:1px solid #000;
+	}
+</style>
+</head>
+<body>
+		
+	<p>
+		<button>색상입력</button>
+		<button>높이얻기</button>
+		<button>여러개의 속성을 한번에 변경</button>
+	</p>
+	<div id='box'></div>
+
+	<script src="js/jquery.js"></script>
+	<script>
+	/* 
+		- getter와 setter 함수
+		- jQuery는 대부분 getter와 setter 함수의 이름을
+		- jQuery에서 css() 함수
+			1) css(속성명, 속성값)	:setter
+			2) css(속성명)			: getter
+			3) css({})				: 여러개의 속성을 한번에 셋팅(JSON)
+	*/
+		$("button:eq(0)").click(function(){
+			//setter
+			$("#box").css("background", "deepskyblue");
+		});	//click end
+
+		$("button:eq(1)").click(function(){
+			//getter
+			var height=$("#box").css("height");
+			alert(height);
+		});	//click end
+
+		$("button:eq(2)").click(function(){
+			var width=800;
+			$("#box").css({height:600, "width":width, "background":"url(img/b_ryan.png)", "border":"50px dotted red"});
+
+		});	//click end
+	</script>
+</body>
+</html>
