@@ -42,6 +42,45 @@
 		<button id="createBtn">테이블 생성</button>
 	</p>
 	<div id="box"></div>
+    
+    <script src="js/jquery.js"></script>
+    <script>
+        //요소를 생성하는 이유 : 댓글의 더보기등의 무한 스크롤링하기 위해
+        //요소의 생성은 경우의 수가 많이 발생이 되기때문에 다소 어렵게 느껴짐
+        $("#createBtn").click(function () {
+            //1)
+            // var table = "";
+            // table += "<table border='1'>";
+            // table += "<tr>";
+            // table += "  <td>대한민국</td>";
+            // table += "</tr>";
+            // table += "</table>";
+            // //$("#box").text(table); 순수문자열
+            // $("#box").html(table); //마크업
 
+            //2)
+            var $table=$("<table></table>");
+            var $tr1=$("<tr><td>사과</td><td>바나나</td>");
+            var $tr2=$("<tr>");
+            var $td3=$("<td>수박</td>");
+            var $td4=$("<td>").text("메론");
+
+            //append(), appendTo() 요소를 끝에 추가
+            //prepend(), prependTo() 요소를 앞에 추가
+            //부모.append(자식)
+            //자식.append(부모)
+
+            //$tr2에 $td3, $td4를 마지막에 자식으로 추가
+            $tr2.append($td3, $td4);
+
+            //$table에 자식으로 추가
+            $table.prepend($tr2, $tr1);
+
+            $("#box").append($table);
+
+            //$tr2에 $td
+        });//click end
+
+    </script>
 </body>
 </html>

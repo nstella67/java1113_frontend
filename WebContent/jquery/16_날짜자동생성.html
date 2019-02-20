@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>날짜 자동생성</title>
+<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css"/>
+<style>
+    body {
+        font:500 24px "Noto Sans KR",sans-serif;
+    }
+    select {
+        font:500 24px "Noto Sans KR",sans-serif;
+        padding:6px 10px;
+        margin:0 3px;
+    }
+</style>
+</head>
+
+<body>
+    <select id="year"></select>년
+    <select id="month"></select>월
+    <select id="date"></select>일
+        
+    <script src="js/jquery.js"></script>
+    <script src="js/moment-with-locales.js"></script>
+    <script>
+        //날짜 데이 자동 생성
+
+        //최초로 함수 호출
+        createYearMonth();
+
+        function createYearMonth(){
+            //1) 1월~12월 생성 후 추가
+            for(var m=1; m<=12; m++){
+                $("<option>").text(m).appendTo("#month");
+            }//for end
+
+            //2) 현재년도 -5년~현재년도+5년까지 출력
+            var nowYear=moment().year();
+            for(var y=nowYear-5; y<=nowYear+5; y++){
+                //3) 현재년도를 미리 selected
+                if(y==nowYear){
+                    // $("<option>").text(y).attr("selected", "selected").appendTo("#year");
+                    $("<option>").text(y).prop("selected", true).appendTo("#year");
+                }else{
+                    $("<option>").text(y).appendTo("#year");
+                }//if end
+
+                //4)'일' 생성하는 함수 호출
+                createDate();
+            }//for end
+
+        }//createYearMonth() end
+
+
+        function createDate(){
+            //text()    : 일반적인 요소의 문자열 값 얻어올 때
+            //val()     : <input> <select> <textarea> 등의 폼과 관련된 값(컨트롤 요소)을 얻어올 때. text아님
+                
+            //9) 기존 '일' 지우기
+            $("#date").empty();
+
+            //5) 목록에서 사용자가 선택한 년도를 얻어옴
+            var year=$("#year").val();
+                
+            //6) 목록에서 선태한 월을 얻어옴
+            var month=$("#month").val();
+                
+            //7) endOf() : moment.js에서 해당월의 마지막 일을 얻어옴
+            var endDay=moment(year+"-"+month).endOf("month").date();
+            //alert(endDay);
+
+            //8) '일' 추가
+            for(var d=1; d<=endDay; d++){
+                $("<option>").text(d).appendTo("#date");
+            }//for end
+        }//createDate() end
+
+        //10) 사용자가 년, 월을 변경했을 때(이벤트)
+        //일을 변경하는 함수를 호출
+        $("#year, #month").change(createDate);
+
+    </script>
+</body>
+</html>

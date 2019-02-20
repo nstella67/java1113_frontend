@@ -56,6 +56,11 @@
 		top:50%;
 		margin:-170px 0 0 -220px;
 	}
+
+	#pinkBtn{background: hotpink;}
+	#blueBtn{background: blue;}
+	#greenBtn{background: green;}
+
 </style>
 </head>
 <body>
@@ -74,7 +79,23 @@
 	</dl>
 </div><!--//exBtn -->
 
+<script src="js/jquery.js"></script>
+<script>
+	//id=exBox
+	//class=btn
+	$("#exBox .btn").click(function(){
+		var idx=$(this).index();
+		//alert(idx);
+		$("#index").text(idx);
 
+		var color=$(this).css("background-color");
+		$("#color").text(color);
+
+		var txt=$(this).text();
+		$("#text").text(txt);
+
+	});//click end
+</script>
 </body>
 </html>
 
