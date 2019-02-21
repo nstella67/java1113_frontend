@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>01_json시작.html</title>
+</head>
+<body>
+
+<script src="js/jquery.js"></script>
+<script>
+    /*
+        JSON : JavaScript Object Notation
+        - 자바스크립트 객체 표기법
+        - 비동기식(문자단위) 통신에서 XML를 대체하는 주요 데이터 포맷
+        - 문자단위 : 단순 문자열, JSON, XML 등
+        - 속성 : 값 쌍으로 데이터가 구성
+        - 속성 → name, key
+        - 값 → value
+    */
+
+    //배열(Array) : 데이터의 묶음
+    // var cars=["Saab", "Volvo", "BMW"];
+    // alert(cars[0]);
+
+    //객체(Object) : 속성들의 묶음
+    //속성명 : 속성값
+    //"속성명" : 속성값
+    var movie={"title":"극한직업", "director":"이병헌", "actor":"이하늬"};
+    //value 접근
+    // alert(movie.title);
+    // alert(movie.director);
+    // alert(movie.actor);
+
+    var movie=[{"title":"극한직업", "director":"이병헌", "actor":"이하늬"},{"title":"증인", "director":"이한", "actor":"정우성"},{"title":"사바하", "director":"장재현", "actor":"이정재"}];
+    // alert(movie[0].title);
+    // alert(movie[1].director);
+    // alert(movie[2].actor);
+</script>
+
+</body>
+</html>
