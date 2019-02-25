@@ -156,23 +156,39 @@
     <!-- popup form #1 -->
     <a href="#x" class="overlay" id="login_form"></a>
     <div class="popup">
-        <h2>로/그/인</h2>
+		<h2>로/그/인</h2>
+		<form id="loginfrm">
         <div>
             <label for="id">아이디</label>
-            <input type="text" id="id" value="" />
+            <input type="text" id="id" name="id" value="" />
         </div>
         <div>
             <label for="password">비밀번호</label>
-            <input type="password" id="password" value="" />
+            <input type="password" id="password" name="password" value="" />
         </div>
         <input type="button" id="loginBtn" value="Log In" />
-
+		</form>
         <a class="close" href="#close"></a>
     </div>
 
 <script src="js/jquery.js"></script>
 <script>
+	$.ajaxSetup({dataType:"text"});
+	$("#loginBtn").click(function(){
+		//alert("test");
+		//?변수=값&변수=값~~
+		//var params="id="+$("#id").val()+"&password="+$("#password").val();
+		var params=$("#loginfrm").serialize();
+		//alert(params);
+		$.post("/frontend/login.do", params, responseProc);
+	});	//click end
 
+	function responseProc(result){
+		$("#panel_id").text(result);	//회원등급 출력
+		$(".popup").hide();	//모달창 숨기기
+		$(".overlay").hide();
+	}//responseProc() end	
+	
 </script>
 
 </body>

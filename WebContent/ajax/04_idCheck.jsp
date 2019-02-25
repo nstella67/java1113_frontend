@@ -19,7 +19,21 @@
     
 <script src="js/jquery.js"></script>
 <script>
+	$("#uid").keyup(function(){
+	//alert("test");
+	$.post("/frontend/idcheck.do",		//요청명령어 
+			 "uid="+$("#uid").val(),		//전달값
+			 responseProc 	//callback함수
+			 );//post() end
+	}); //keyup() end
 
+	function responseProc(result){
+	  //alert(result);
+		$("#demo").empty();
+		$("#demo").html(result);
+		$("#demo").show();
+	}
+  
 </script>
 </body>
 </html>
